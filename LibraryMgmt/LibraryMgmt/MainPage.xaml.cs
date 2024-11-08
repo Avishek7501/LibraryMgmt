@@ -18,7 +18,7 @@ namespace LibraryMgmt
 
         private async void getstarted(object sender, EventArgs e)
         {
-           await Navigation.PushModalAsync(new loginpage());
+           await Navigation.PushModalAsync(new registerpage());
         }
     }
 }

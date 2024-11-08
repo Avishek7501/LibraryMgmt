@@ -16,37 +16,30 @@
 
         <!-- Scrollable Content Area -->
         <ScrollView VerticalOptions="FillAndExpand">
-            <StackLayout Padding="10" Spacing="20" HorizontalOptions="CenterAndExpand">
+            <StackLayout VerticalOptions="FillAndExpand" Spacing="0" Padding="20">
+
+                <!-- Notification Section (Clickable) -->
+                <StackLayout Orientation="Horizontal" VerticalOptions="Start" HorizontalOptions="Center" Padding="0,10,0,10">
+                    <StackLayout.GestureRecognizers>
+                        <TapGestureRecognizer Tapped="OnNotificationTapped" />
+                    </StackLayout.GestureRecognizers>
+                    <Label Text="&#xf071;" FontFamily="{StaticResource FontAwesomeSolid}" FontSize="24" TextColor="Red" />
+                    <Label Text="{Binding NotificationMessage}" FontSize="15" TextColor="Red" VerticalOptions="Center" Margin="5,0,0,0"/>
+                </StackLayout>
 
                 <!-- Header with Icon and Title -->
-                <StackLayout VerticalOptions="Center" HorizontalOptions="Center">
+                <StackLayout VerticalOptions="Center" HorizontalOptions="Center" Padding="20">
                     <Image Source="logo.png" WidthRequest="120" HeightRequest="120"/>
+                   
                 </StackLayout>
 
                 <!-- Welcome Section -->
-                <Frame BackgroundColor="#DCC5F5" CornerRadius="10" WidthRequest="348" HeightRequest="104" Padding="10">
+                <Frame BackgroundColor="#DCC5F5" CornerRadius="10" WidthRequest="348" HeightRequest="104" Padding="10" Margin="30">
                     <Label Text="Welcome, User" HorizontalOptions="Center" VerticalTextAlignment="Center" FontSize="Medium" TextColor="Black"/>
                 </Frame>
 
-                <!-- Notification Section -->
-                <Frame BackgroundColor="#AFD4FF" CornerRadius="10" WidthRequest="386" HeightRequest="149" Padding="10">
-                    <Frame.GestureRecognizers>
-                        <TapGestureRecognizer Tapped="OnNotificationTapped" />
-                    </Frame.GestureRecognizers>
-                    <StackLayout Orientation="Vertical" HorizontalOptions="Center">
-                        <Label Text="Notification" FontSize="Medium" TextColor="Black" HorizontalOptions="Center"/>
-                        <Frame BackgroundColor="White" WidthRequest="332" HeightRequest="62" Padding="5" CornerRadius="5">
-                            <StackLayout Orientation="Horizontal" HorizontalOptions="Center" VerticalOptions="CenterAndExpand">
-                                <Label Text="&#xf071;" FontFamily="{StaticResource FontAwesomeSolid}" FontSize="20" TextColor="Black" />
-                                <!-- Warning icon -->
-                                <Label Text="{Binding NotificationMessage}"  FontSize="Small" TextColor="Black" Margin="5,0,0,0"/>
-                            </StackLayout>
-                        </Frame>
-                    </StackLayout>
-                </Frame>
-
-                <!-- Main Options Section with Current Books and Return History -->
-                <Grid ColumnSpacing="20" Padding="10">
+                <!-- Main Options Section with Current Books and Issue History -->
+                <Grid ColumnSpacing="20" RowSpacing="10" Padding="10">
                     <Grid.RowDefinitions>
                         <RowDefinition Height="Auto"/>
                         <RowDefinition Height="Auto"/>
@@ -80,6 +73,7 @@
                         </StackLayout>
                     </Frame>
                 </Grid>
+
             </StackLayout>
         </ScrollView>
 
