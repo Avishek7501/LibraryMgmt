@@ -1,0 +1,45 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="LibraryMgmt.MainPage"
+             BackgroundColor="White">
+
+    <!-- Wrap all elements in a single StackLayout to avoid multiple Content properties -->
+    <StackLayout VerticalOptions="FillAndExpand" Spacing="30" Padding="0,100,0,0">
+
+        <!-- Centered Content -->
+        <StackLayout VerticalOptions="CenterAndExpand" HorizontalOptions="CenterAndExpand" Spacing="30">
+
+            <!-- Library Icon -->
+            <Image Source="logo.png" WidthRequest="200" HeightRequest="200" HorizontalOptions="Center"/>
+
+            <!-- Title Text -->
+            <Label Text="Library management system"
+                   FontSize="Medium"
+                   TextColor="#5A7D7C"
+                   HorizontalOptions="Center"
+                   FontAttributes="Bold"/>
+
+            <!-- Subtitle Text -->
+            <Label Text="Managing your Library"
+                   FontSize="Small"
+                   TextColor="#5A7D7C"
+                   HorizontalOptions="Center"
+                   FontAttributes="Italic"/>
+
+        </StackLayout>
+
+        <!-- Get Started Button positioned at the bottom -->
+        <StackLayout VerticalOptions="EndAndExpand" Padding="20">
+            <Button Text="Get Started"
+                    BackgroundColor="#DCC5F5"
+                    TextColor="Black"
+                    CornerRadius="20"
+                    HorizontalOptions="Center"
+                    WidthRequest="150"
+                    Clicked="getstarted"/>
+        </StackLayout>
+
+    </StackLayout>
+
+</ContentPage>

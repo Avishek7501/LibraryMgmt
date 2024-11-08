@@ -1,0 +1,90 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" xmlns:local="clr-namespace:LibraryMgmt"
+             x:Class="LibraryMgmt.homepage"
+             Background="white">
+
+    <ContentPage.Resources>
+        <!-- Define Font Awesome Font Family -->
+        <OnPlatform x:Key="FontAwesomeSolid" x:TypeArguments="x:String">
+            <On Platform="Android" Value="fa-solid-900.ttf#Font Awesome 5 Free Solid" />
+        </OnPlatform>
+    </ContentPage.Resources>
+
+    <!-- StackLayout as main container for scrolling content and fixed navigation -->
+    <StackLayout VerticalOptions="FillAndExpand" Spacing="0">
+
+        <!-- Scrollable Content Area -->
+        <ScrollView VerticalOptions="FillAndExpand">
+            <StackLayout Padding="10" Spacing="20" HorizontalOptions="CenterAndExpand">
+
+                <!-- Header with Icon and Title -->
+                <StackLayout VerticalOptions="Center" HorizontalOptions="Center">
+                    <Image Source="logo.png" WidthRequest="120" HeightRequest="120"/>
+                </StackLayout>
+
+                <!-- Welcome Section -->
+                <Frame BackgroundColor="#DCC5F5" CornerRadius="10" WidthRequest="348" HeightRequest="104" Padding="10">
+                    <Label Text="Welcome, User" HorizontalOptions="Center" VerticalTextAlignment="Center" FontSize="Medium" TextColor="Black"/>
+                </Frame>
+
+                <!-- Notification Section -->
+                <Frame BackgroundColor="#AFD4FF" CornerRadius="10" WidthRequest="386" HeightRequest="149" Padding="10">
+                    <Frame.GestureRecognizers>
+                        <TapGestureRecognizer Tapped="OnNotificationTapped" />
+                    </Frame.GestureRecognizers>
+                    <StackLayout Orientation="Vertical" HorizontalOptions="Center">
+                        <Label Text="Notification" FontSize="Medium" TextColor="Black" HorizontalOptions="Center"/>
+                        <Frame BackgroundColor="White" WidthRequest="332" HeightRequest="62" Padding="5" CornerRadius="5">
+                            <StackLayout Orientation="Horizontal" HorizontalOptions="Center" VerticalOptions="CenterAndExpand">
+                                <Label Text="&#xf071;" FontFamily="{StaticResource FontAwesomeSolid}" FontSize="20" TextColor="Black" />
+                                <!-- Warning icon -->
+                                <Label Text="{Binding NotificationMessage}"  FontSize="Small" TextColor="Black" Margin="5,0,0,0"/>
+                            </StackLayout>
+                        </Frame>
+                    </StackLayout>
+                </Frame>
+
+                <!-- Main Options Section with Current Books and Return History -->
+                <Grid ColumnSpacing="20" Padding="10">
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="Auto"/>
+                        <RowDefinition Height="Auto"/>
+                    </Grid.RowDefinitions>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="*"/>
+                        <ColumnDefinition Width="*"/>
+                    </Grid.ColumnDefinitions>
+
+                    <!-- Current Books (Clickable) -->
+                    <Frame BackgroundColor="#AFD4FF" CornerRadius="10" Padding="10" WidthRequest="129" HeightRequest="121">
+                        <Frame.GestureRecognizers>
+                            <TapGestureRecognizer Tapped="OnCurrentBooksTapped" />
+                        </Frame.GestureRecognizers>
+                        <StackLayout VerticalOptions="CenterAndExpand" HorizontalOptions="CenterAndExpand">
+                            <Label Text="&#xf02d;" FontFamily="{StaticResource FontAwesomeSolid}" FontSize="30" TextColor="Black" />
+                            <!-- Book icon -->
+                            <Label Text="Current Books" FontSize="Small" HorizontalOptions="Center"/>
+                        </StackLayout>
+                    </Frame>
+
+                    <!-- Return History (Clickable) -->
+                    <Frame BackgroundColor="#AFD4FF" CornerRadius="10" Padding="10" Grid.Column="1" WidthRequest="129" HeightRequest="121">
+                        <Frame.GestureRecognizers>
+                            <TapGestureRecognizer Tapped="OnReturnHistoryTapped" />
+                        </Frame.GestureRecognizers>
+                        <StackLayout VerticalOptions="CenterAndExpand" HorizontalOptions="CenterAndExpand">
+                            <Label Text="&#xf2f5;" FontFamily="{StaticResource FontAwesomeSolid}" FontSize="30" TextColor="Black" />
+                            <!-- History icon -->
+                            <Label Text="Return History" FontSize="Small" HorizontalOptions="Center"/>
+                        </StackLayout>
+                    </Frame>
+                </Grid>
+            </StackLayout>
+        </ScrollView>
+
+        <!-- Fixed Bottom Navigation Bar as Clickable Icons -->
+        <local:bottomnavigation VerticalOptions="End" />
+
+    </StackLayout>
+</ContentPage>
