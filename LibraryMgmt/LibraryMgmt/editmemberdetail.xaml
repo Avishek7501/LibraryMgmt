@@ -1,0 +1,61 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="LibraryMgmt.editmemberdetail">
+    <ContentPage.Content>
+        <StackLayout>
+            <StackLayout  VerticalOptions="FillAndExpand" Background="white">
+
+                <!-- Register Header at the Top -->
+                <Frame BackgroundColor="#DCC5F5"  Padding="10" HeightRequest="80" HorizontalOptions="FillAndExpand" HasShadow="False">
+                    <Label Text="Edit Details" HorizontalOptions="Center" FontSize="Medium" TextColor="Black" VerticalOptions="CenterAndExpand"/>
+                </Frame>
+
+                <!-- Editable Fields -->
+                <StackLayout VerticalOptions="CenterAndExpand">
+                    <!-- Name Field -->
+                    <Frame CornerRadius="10" Padding="10" Margin="10,5" WidthRequest="300">
+                        <Entry x:Name="NameEntry" Placeholder="Name" Text="{Binding Name}" FontSize="Medium" TextColor="Black" BackgroundColor="Transparent"/>
+                    </Frame>
+
+                    <!-- Address Field -->
+                    <Frame CornerRadius="10" Padding="10" Margin="10,5" WidthRequest="300">
+                        <Entry x:Name="AddressEntry" Placeholder="Address" Text="{Binding Address}" FontSize="Medium" TextColor="Black" BackgroundColor="Transparent"/>
+                    </Frame>
+
+                    <!-- Contact Field -->
+                    <Frame CornerRadius="10" Padding="10" Margin="10,5" WidthRequest="300">
+                        <Entry x:Name="ContactEntry" Placeholder="Contact" Text="{Binding Contact}" FontSize="Medium" Keyboard="Telephone" TextColor="Black" BackgroundColor="Transparent"/>
+                    </Frame>
+
+                    <!-- Email Field -->
+                    <Frame CornerRadius="10" Padding="10" Margin="10,5" WidthRequest="300">
+                        <Entry x:Name="EmailEntry" Placeholder="Email" Text="{Binding Email}" FontSize="Medium" Keyboard="Email" TextColor="Black" BackgroundColor="Transparent"/>
+                    </Frame>
+
+                    <!-- Username Field (Read-only) -->
+                    <Frame CornerRadius="10" Padding="10" Margin="10,5" WidthRequest="300">
+                        <Entry x:Name="UsernameEntry" Placeholder="Username" Text="{Binding Username}" FontSize="Medium" TextColor="Gray" BackgroundColor="Transparent" IsEnabled="False"/>
+                    </Frame>
+                </StackLayout>
+
+
+                <StackLayout VerticalOptions="CenterAndExpand">
+                    <!-- Edit Button -->
+                    <Button Text="Save Changes"
+BackgroundColor="#DCC5F5"
+TextColor="Black"
+CornerRadius="10"
+HeightRequest="50"
+WidthRequest="200"
+HorizontalOptions="Center"
+VerticalOptions="End"
+Padding="10"
+Clicked="OnEditClicked"/>
+                </StackLayout>
+
+
+            </StackLayout>
+        </StackLayout>
+    </ContentPage.Content>
+</ContentPage>

@@ -19,7 +19,7 @@ namespace LibraryMgmt.Services
             };
             _httpClient = new HttpClient(handler)
             {
-                BaseAddress = new Uri("https://192.168.2.28:7253/api/")
+                BaseAddress = new Uri("https://10.0.2.2:7253/api/")
             };
             _httpClient.DefaultRequestHeaders.Accept.Add(new MediaTypeWithQualityHeaderValue("application/json"));
         }

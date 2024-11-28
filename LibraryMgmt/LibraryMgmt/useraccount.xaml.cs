@@ -8,7 +8,7 @@ namespace LibraryMgmt
     [XamlCompilation(XamlCompilationOptions.Compile)]
     public partial class useraccount : ContentPage
     {
-        private readonly Member _currentMember;
+        private  Member _currentMember;
 
         public useraccount(Member member)
         {
@@ -20,9 +20,22 @@ namespace LibraryMgmt
             }
 
             _currentMember = member;
+            BindingContext = _currentMember;
+
+            // Subscribe to the "MemberUpdated" message
+            MessagingCenter.Subscribe<editmemberdetail, Member>(this, "MemberUpdated", (sender, updatedMember) =>
+            {
+                // Update the current member
+                _currentMember = updatedMember;
+
+                // Refresh the UI
+                BindingContext = _currentMember;
+                BindMemberDetails();
+            });
 
             // Bind member details to UI
             BindMemberDetails();
+
         }
 
         private void BindMemberDetails()
@@ -46,6 +59,15 @@ namespace LibraryMgmt
 
             // Navigate back to login page
             await Navigation.PushModalAsync(new loginpage());
+        }
+
+        private async void OneditdetailsTapped(object sender, EventArgs e)
+        {
+            // Clear the session (if using a session manager)
+
+
+            // Navigate to edit page
+            await Navigation.PushModalAsync(new editmemberdetail(_currentMember));
         }
     }
 }

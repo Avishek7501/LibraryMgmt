@@ -33,8 +33,21 @@
                         <!-- Address -->
                         <Label Text="Address :" FontSize="Medium" TextColor="Black" VerticalOptions="Center" Grid.Row="2"/>
                         <Label x:Name="AddressLabel" FontSize="Medium" TextColor="Black" Grid.Row="2" Grid.Column="1" VerticalOptions="Center"/>
+
+                        <!-- edit -->
+                        
                     </Grid>
                 </StackLayout>
+
+                <Label Text="Edit Details"
+   FontSize="Small"
+   TextColor="Red"
+   HorizontalOptions="Center"
+   Margin="0,20,0,0">
+                    <Label.GestureRecognizers>
+                        <TapGestureRecognizer Tapped="OneditdetailsTapped" />
+                    </Label.GestureRecognizers>
+                </Label>
 
                 <!-- Action Buttons -->
                 <StackLayout Padding="20" Spacing="10" HorizontalOptions="Center">
