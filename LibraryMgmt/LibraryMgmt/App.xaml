@@ -3,6 +3,10 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="LibraryMgmt.App">
     <Application.Resources>
-
+        <OnPlatform x:TypeArguments="x:String" x:Key="FontAwesomeSolid">
+            <On Platform="Android" Value="fa-solid-900.ttf#FontAwesome" />
+            <On Platform="iOS" Value="FontAwesome" />
+        </OnPlatform>
     </Application.Resources>
+    
 </Application>

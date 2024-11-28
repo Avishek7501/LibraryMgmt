@@ -44,13 +44,22 @@ namespace LibraryMgmtAPI.Controllers
 
         // GET: api/Notification/Count/{memberId}
         [HttpGet("Count/{memberId}")]
-        public async Task<ActionResult<int>> GetNotificationCount(int memberId)
+        public async Task<ActionResult<int>> GetTotalNotificationCount(int memberId)
         {
-            var count = await _context.Notifications
-                .Where(n => n.MemberID == memberId && !n.IsRead)
-                .CountAsync();
+            try
+            {
+                var count = await _context.Notifications
+                    .Where(n => n.MemberID == memberId)
+                    .CountAsync();
 
-            return Ok(count);
+                return Ok(count);
+            }
+            catch (Exception ex)
+            {
+                // Log  error for debugging
+                Console.WriteLine($"Error fetching notification count: {ex.Message}");
+                return StatusCode(500, "An error occurred while fetching notification count.");
+            }
         }
 
         // PUT: api/Notification/MarkAsRead/{id}

@@ -27,11 +27,21 @@ namespace LibraryMgmtAPI.Controllers
 
         // GET: api/ReturnHistory/Member/{memberId}
         [HttpGet("Member/{memberId}")]
-        public async Task<ActionResult<IEnumerable<ReturnHistory>>> GetMemberReturnHistory(int memberId)
+        public async Task<ActionResult<IEnumerable<object>>> GetMemberReturnHistory(int memberId)
         {
+            // Join ReturnHistories, Books, and IssuedBooks tables
             var returnHistory = await _context.ReturnHistories
                 .Where(rh => rh.MemberID == memberId)
                 .OrderByDescending(rh => rh.ReturnDate)
+                .Select(rh => new
+                {
+                    ReturnID = rh.ReturnID,
+                    BookID = rh.BookID,
+                    Title = _context.Books.Where(b => b.BookID == rh.BookID).Select(b => b.Title).FirstOrDefault(),
+                    Author = _context.Books.Where(b => b.BookID == rh.BookID).Select(b => b.Author).FirstOrDefault(),
+                    Genre = _context.Books.Where(b => b.BookID == rh.BookID).Select(b => b.Genre).FirstOrDefault(),
+                    ReturnDate = rh.ReturnDate
+                })
                 .ToListAsync();
 
             if (!returnHistory.Any())
@@ -39,7 +49,7 @@ namespace LibraryMgmtAPI.Controllers
                 return NotFound("No return history found for this member.");
             }
 
-            return returnHistory;
+            return Ok(returnHistory);
         }
 
         // POST: api/ReturnHistory/ReturnBookByCopyID/{copyId}

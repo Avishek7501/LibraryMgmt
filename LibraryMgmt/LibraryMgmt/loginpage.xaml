@@ -1,0 +1,68 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="LibraryMgmt.loginpage"
+             Background="white">
+    <ContentPage.Content>
+        <StackLayout Padding="30" VerticalOptions="CenterAndExpand" Spacing="20">
+
+            <!-- Logo Section -->
+            <StackLayout HorizontalOptions="Center" VerticalOptions="Start" Margin="0,0,0,40">
+                <Image Source="logo.png" WidthRequest="150" HeightRequest="150" HorizontalOptions="Center"/>
+                
+            </StackLayout>
+
+
+            <!-- Username Entry -->
+            <Label Text="Username" FontSize="Small" TextColor="Black" />
+            <Entry Placeholder="Enter your username"
+               FontSize="Medium"
+               TextColor="Black"
+               BackgroundColor="White"
+               Margin="0,0,0,10"
+               x:Name="UsernameEntry"/>
+
+            <!-- Password Entry -->
+            <Label Text="Password" FontSize="Small" TextColor="Black" />
+            <Entry Placeholder="Enter your password"
+               FontSize="Medium"
+               IsPassword="True"
+               TextColor="Black"
+               BackgroundColor="White"
+               Margin="0,0,0,10"
+               x:Name="PasswordEntry"/>
+
+            <!-- Login Button -->
+            <Button Text="Login"
+                BackgroundColor="#DCC5F5"
+                TextColor="Black"
+                CornerRadius="20"
+                HorizontalOptions="Center"
+                WidthRequest="150"
+                Clicked="OnLoginClicked"/>
+
+            <!-- Forgot Password Link -->
+            <Label Text="forgot password? contact library"
+               FontSize="Small"
+               TextColor="Red"
+               HorizontalOptions="Center"
+               Margin="0,20,0,0">
+                <Label.GestureRecognizers>
+                    <TapGestureRecognizer Tapped="OnForgotPasswordTapped" />
+                </Label.GestureRecognizers>
+            </Label>
+            <StackLayout>
+                <!-- Forgot Password Link -->
+                <Label Text="New Here?Click to register"
+    FontSize="Small"
+    TextColor="Red"
+    HorizontalOptions="Center"
+    Margin="0,20,0,0">
+                    <Label.GestureRecognizers>
+                        <TapGestureRecognizer Tapped="OnRegisterTapped" />
+                    </Label.GestureRecognizers>
+                </Label>
+            </StackLayout>
+        </StackLayout>
+    </ContentPage.Content>
+</ContentPage>

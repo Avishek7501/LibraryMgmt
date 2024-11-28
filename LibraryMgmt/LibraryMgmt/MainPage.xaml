@@ -1,24 +1,48 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
-             x:Class="LibraryMgmt.MainPage">
+             x:Class="LibraryMgmt.MainPage"
+             BackgroundColor="White">
 
-    <StackLayout>
-        <Frame BackgroundColor="#2196F3" Padding="24" CornerRadius="0">
-            <Label Text="Welcome to Xamarin.Forms!" HorizontalTextAlignment="Center" TextColor="White" FontSize="36"/>
-        </Frame>
-        <Label Text="Start developing now" FontSize="Title" Padding="30,10,30,10"/>
-        <Label Text="Make changes to your XAML file and save to see your UI update in the running app with XAML Hot Reload. Give it a try!" FontSize="16" Padding="30,0,30,0"/>
-        <Label FontSize="16" Padding="30,24,30,0">
-            <Label.FormattedText>
-                <FormattedString>
-                    <FormattedString.Spans>
-                        <Span Text="Learn more at "/>
-                        <Span Text="https://aka.ms/xamarin-quickstart" FontAttributes="Bold"/>
-                    </FormattedString.Spans>
-                </FormattedString>
-            </Label.FormattedText>
-        </Label>
+    <!-- Wrap all elements in a single StackLayout to avoid multiple Content properties -->
+    <StackLayout VerticalOptions="FillAndExpand" Spacing="30" Padding="0,100,0,0">
+
+        <!-- Centered Content -->
+        <StackLayout VerticalOptions="CenterAndExpand" HorizontalOptions="CenterAndExpand" Spacing="30">
+
+            <!-- Library Icon -->
+            <Image Source="logo.png" WidthRequest="200" HeightRequest="200" HorizontalOptions="Center"/>
+
+            <!-- Title Text -->
+            <Label Text="Library management system"
+                   FontSize="Medium"
+                   TextColor="#5A7D7C"
+                   HorizontalOptions="Center"
+                   FontAttributes="Bold"/>
+
+            <!-- Subtitle Text -->
+            <Label Text="Managing your Library"
+                   FontSize="Small"
+                   TextColor="#5A7D7C"
+                   HorizontalOptions="Center"
+                   FontAttributes="Italic"/>
+
+        </StackLayout>
+
+        <!-- Get Started Button positioned at the bottom -->
+        <StackLayout VerticalOptions="EndAndExpand" Padding="20">
+            <Button Text="Get Started"
+                    BackgroundColor="#DCC5F5"
+                    TextColor="Black"
+                    CornerRadius="20"
+                    HorizontalOptions="Center"
+                    WidthRequest="150"
+                    Clicked="getstarted"/>
+        </StackLayout>
+
     </StackLayout>
 
 </ContentPage>
+
+
+

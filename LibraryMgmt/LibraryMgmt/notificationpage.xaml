@@ -1,0 +1,38 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:local="clr-namespace:LibraryMgmt"
+             x:Class="LibraryMgmt.notificationpage"
+             Background="white">
+    <ContentPage.Content>
+        <StackLayout>
+            <StackLayout Padding="0" VerticalOptions="FillAndExpand">
+                <!-- Header -->
+                <Frame BackgroundColor="#DCC5F5" CornerRadius="0" Padding="0" Margin="0,0,0,0" HeightRequest="120" HorizontalOptions="FillAndExpand" HasShadow="False">
+                    <Label Text="Notifications" HorizontalOptions="Center" FontSize="Medium" TextColor="Black" VerticalOptions="CenterAndExpand"/>
+                </Frame>
+            </StackLayout>
+
+            <!-- CollectionView for Notifications List -->
+            <CollectionView ItemsSource="{Binding Notifications}" Margin="0,20,0,0" SelectionMode="None">
+                <CollectionView.ItemTemplate>
+                    <DataTemplate>
+                        <StackLayout>
+                            <!-- Notification Item -->
+                            <Frame HasShadow="False" Padding="10" BorderColor="Transparent" CornerRadius="0" HeightRequest="50" BackgroundColor="Transparent">
+                                <Label Text="{Binding Message}" FontSize="Medium" TextColor="Black" VerticalOptions="Center" HorizontalTextAlignment="Center"/>
+                            </Frame>
+                            <!-- Separator Line -->
+                            <BoxView HeightRequest="2" HorizontalOptions="FillAndExpand" Color="Black"/>
+                        </StackLayout>
+                    </DataTemplate>
+                </CollectionView.ItemTemplate>
+            </CollectionView>
+
+            <!-- Bottom Navigation -->
+            <StackLayout>
+                <local:bottomnavigation VerticalOptions="End" />
+            </StackLayout>
+        </StackLayout>
+    </ContentPage.Content>
+</ContentPage>

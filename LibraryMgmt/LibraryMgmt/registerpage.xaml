@@ -1,0 +1,65 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="LibraryMgmt.registerpage">
+    <ContentPage.Content>
+        <StackLayout>
+            <StackLayout  VerticalOptions="FillAndExpand" Background="white">
+
+                <!-- Register Header at the Top -->
+                <Frame BackgroundColor="#DCC5F5"  Padding="10" HeightRequest="80" HorizontalOptions="FillAndExpand" HasShadow="False">
+                    <Label Text="Register" HorizontalOptions="Center" FontSize="Medium" TextColor="Black" VerticalOptions="CenterAndExpand"/>
+                </Frame>
+
+                <StackLayout VerticalOptions="CenterAndExpand">
+                    <!-- Name Field -->
+                    <Frame  CornerRadius="10" Padding="10" Margin="10,5" WidthRequest="300">
+                        <Entry x:Name="NameEntry" Placeholder="Name" FontSize="Medium" TextColor="Black" BackgroundColor="Transparent"/>
+                    </Frame>
+
+                    <!-- Address Field -->
+                    <Frame   Padding="10" Margin="10,5" WidthRequest="300">
+                        <Entry x:Name="AddressEntry" Placeholder="Address" FontSize="Medium" TextColor="Black" BackgroundColor="Transparent"/>
+                    </Frame>
+
+                    <!-- Contact Field -->
+                    <Frame  CornerRadius="10" Padding="10" Margin="10,5" WidthRequest="300">
+                        <Entry x:Name="ContactEntry" Placeholder="Contact" FontSize="Medium" Keyboard="Telephone" TextColor="Black" BackgroundColor="Transparent"/>
+                    </Frame>
+
+                    <!-- Email Field -->
+                    <Frame  CornerRadius="10" Padding="10" Margin="10,5" WidthRequest="300">
+                        <Entry x:Name="EmailEntry" Placeholder="Email" FontSize="Medium" Keyboard="Email" TextColor="Black" BackgroundColor="Transparent"/>
+                    </Frame>
+
+                    <!-- Username Field -->
+                    <Frame  CornerRadius="10" Padding="10" Margin="10,5" WidthRequest="300">
+                        <Entry x:Name="UsernameEntry" Placeholder="Username" FontSize="Medium" TextColor="Black" BackgroundColor="Transparent"/>
+                    </Frame>
+
+                    <!-- Password Field -->
+                    <Frame  CornerRadius="10" Padding="10" Margin="10,5" WidthRequest="300">
+                        <Entry x:Name="PasswordEntry" Placeholder="Password" FontSize="Medium" IsPassword="True" TextColor="Black" BackgroundColor="Transparent"/>
+                    </Frame>
+
+                </StackLayout>
+
+                <StackLayout VerticalOptions="CenterAndExpand">
+                    <!-- Register Button -->
+                    <Button Text="REGISTER"
+     BackgroundColor="#DCC5F5"
+     TextColor="Black"
+     CornerRadius="10"
+     HeightRequest="50"
+     WidthRequest="200"
+     HorizontalOptions="Center"
+     VerticalOptions="End"
+     Padding="10"
+     Clicked="OnRegisterButtonClicked"/>
+                </StackLayout>
+
+               
+            </StackLayout>
+        </StackLayout>
+    </ContentPage.Content>
+</ContentPage>

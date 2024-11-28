@@ -36,6 +36,27 @@ namespace LibraryMgmtAPI.Controllers
             return book;
         }
 
+        // GET: api/Books/Search?name=BookName
+        [HttpGet("Search")]
+        public async Task<ActionResult<IEnumerable<Book>>> GetBookByName(string name)
+        {
+            if (string.IsNullOrWhiteSpace(name))
+            {
+                return BadRequest("Book name cannot be empty.");
+            }
+
+            var books = await _context.Books
+                .Where(b => EF.Functions.Like(b.Title, $"%{name}%"))
+                .ToListAsync();
+
+            if (!books.Any())
+            {
+                return NotFound("No books found matching the given name.");
+            }
+
+            return books;
+        }
+
         // POST: api/Books
         [HttpPost]
         public async Task<ActionResult<Book>> PostBook(Book book)

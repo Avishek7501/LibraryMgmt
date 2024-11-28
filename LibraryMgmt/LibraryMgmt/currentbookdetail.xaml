@@ -1,0 +1,61 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:local="clr-namespace:LibraryMgmt"
+             x:Class="LibraryMgmt.currentbookdetail">
+    <ContentPage.Content>
+        <StackLayout>
+
+            <StackLayout VerticalOptions="FillAndExpand" Spacing="20">
+
+                <!-- Header for Current Book Detail -->
+                <Frame BackgroundColor="#DCC5F5" Padding="10" HeightRequest="80" HorizontalOptions="FillAndExpand" HasShadow="False">
+                    <Label Text="Current Book Detail" HorizontalOptions="Center" FontSize="Medium" TextColor="Black" VerticalOptions="CenterAndExpand" />
+                </Frame>
+
+                <!-- Book Icon and Title -->
+                <Grid ColumnDefinitions="80, Auto" HorizontalOptions="Center" VerticalOptions="CenterAndExpand" Padding="10">
+                    <!-- Book Icon -->
+                    <Label Text="&#xf02d;" FontFamily="{StaticResource FontAwesomeSolid}" FontSize="80" TextColor="Purple" VerticalOptions="Center" Grid.Column="0" HorizontalOptions="End" />
+
+                    <!-- Book Title -->
+                    <Label Text="{Binding Title}" FontSize="Large" TextColor="Black" VerticalOptions="Center" Grid.Column="1" HorizontalOptions="Start" />
+                </Grid>
+
+                <!-- Book Details -->
+                <StackLayout Padding="20" Spacing="10" VerticalOptions="StartAndExpand">
+                    <Grid ColumnDefinitions="Auto, *" RowSpacing="10">
+                        <!-- Genre -->
+                        <Label Text="Genre :" FontSize="Medium" TextColor="Black" VerticalOptions="Center" />
+                        <Label Text="{Binding Genre}" FontSize="Medium" TextColor="Black" Grid.Column="1" VerticalOptions="Center" />
+
+                        <!-- Author -->
+                        <Label Text="Author :" FontSize="Medium" TextColor="Black" VerticalOptions="Center" Grid.Row="1" />
+                        <Label Text="{Binding Author}" FontSize="Medium" TextColor="Black" Grid.Row="1" Grid.Column="1" VerticalOptions="Center" />
+
+                        <!-- Published Date -->
+                        <Label Text="Published :" FontSize="Medium" TextColor="Black" VerticalOptions="Center" Grid.Row="2" />
+                        <Label Text="{Binding PublishedDate, StringFormat='{0:yyyy/MM/dd}'}" FontSize="Medium" TextColor="Black" Grid.Row="2" Grid.Column="1" VerticalOptions="Center" />
+                    </Grid>
+                </StackLayout>
+
+                <!-- Issued Date and Return Date -->
+                <StackLayout Padding="20" Spacing="10">
+                    <Grid ColumnDefinitions="Auto, *" RowSpacing="10">
+                        <!-- Issued Date -->
+                        <Label Text="Issued Date :" FontSize="Medium" TextColor="Black" VerticalOptions="Center" />
+                        <Label Text="{Binding IssuedDate, StringFormat='{0:yyyy/MM/dd}'}" FontSize="Medium" TextColor="Black" Grid.Column="1" VerticalOptions="Center" />
+
+                        <!-- Return Date -->
+                        <Label Text="Return Date :" FontSize="Medium" TextColor="Black" VerticalOptions="Center" Grid.Row="1" />
+                        <Label Text="{Binding ReturnDate, StringFormat='{0:yyyy/MM/dd}'}" FontSize="Medium" TextColor="Black" Grid.Row="1" Grid.Column="1" VerticalOptions="Center" />
+                    </Grid>
+                </StackLayout>
+
+                <!-- Bottom Navigation -->
+                <local:bottomnavigation VerticalOptions="End" />
+            </StackLayout>
+
+        </StackLayout>
+    </ContentPage.Content>
+</ContentPage>

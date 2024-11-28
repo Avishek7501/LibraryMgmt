@@ -1,0 +1,56 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:local="clr-namespace:LibraryMgmt"
+             x:Class="LibraryMgmt.searchpage">
+    <ContentPage.Content>
+        <StackLayout>
+            <StackLayout VerticalOptions="FillAndExpand" Spacing="10">
+
+                <!-- Header for Search Book -->
+                <Frame BackgroundColor="#DCC5F5" Padding="10" HeightRequest="80" HorizontalOptions="FillAndExpand" HasShadow="False">
+                    <Label Text="Search Book" HorizontalOptions="Center" FontSize="Medium" TextColor="Black" VerticalOptions="CenterAndExpand"/>
+                </Frame>
+
+                <!-- Search Bar Section -->
+                <Frame BackgroundColor="#EAE6F7" CornerRadius="20" Padding="10" Margin="0,20,0,20">
+                    <Grid>
+                        <!-- Search Entry -->
+                        <Entry x:Name="SearchEntry" Placeholder="Search for a book..." FontSize="Medium" TextColor="Black" BackgroundColor="Transparent"/>
+
+                        <!-- Search Icon -->
+                        <Label Text="&#xf002;" FontFamily="{StaticResource FontAwesomeSolid}" FontSize="20" TextColor="Gray" VerticalOptions="Center" HorizontalOptions="End">
+                            <Label.GestureRecognizers>
+                                <TapGestureRecognizer Tapped="OnSearchTapped" />
+                            </Label.GestureRecognizers>
+                        </Label>
+                    </Grid>
+                </Frame>
+
+                <!-- Search Results Section -->
+                <StackLayout x:Name="SearchResults" Spacing="10" IsVisible="False">
+                    <!-- Status Message -->
+                    <Label x:Name="ResultStatusLabel" FontSize="Medium" TextColor="Black" HorizontalOptions="Center" />
+
+                    <!-- Book Result -->
+                    <Frame x:Name="BookResultFrame" IsVisible="False" BackgroundColor="#EAE6F7" CornerRadius="10" Padding="10" Margin="0,5,0,5">
+                        <StackLayout Orientation="Horizontal" Spacing="10" VerticalOptions="CenterAndExpand">
+                            <StackLayout.GestureRecognizers>
+                                <TapGestureRecognizer Tapped="OnResultTapped"/>
+                            </StackLayout.GestureRecognizers>
+                            <!-- Book Icon -->
+                            <Label Text="&#xf02d;" FontFamily="{StaticResource FontAwesomeSolid}" FontSize="24" TextColor="Purple" VerticalOptions="Center" />
+                            <!-- Book Name -->
+                            <Label x:Name="BookNameLabel" TextColor="Black" FontSize="Medium" VerticalOptions="Center"/>
+                        </StackLayout>
+                    </Frame>
+                </StackLayout>
+            </StackLayout>
+
+            <!-- Bottom Navigation -->
+            <StackLayout>
+                <local:bottomnavigation VerticalOptions="End" />
+            </StackLayout>
+        </StackLayout>
+    </ContentPage.Content>
+</ContentPage>

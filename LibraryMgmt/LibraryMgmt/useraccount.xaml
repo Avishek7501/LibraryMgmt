@@ -1,0 +1,50 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" xmlns:local="clr-namespace:LibraryMgmt"
+             x:Class="LibraryMgmt.useraccount">
+    <ContentPage.Content>
+        <StackLayout>
+            <StackLayout VerticalOptions="FillAndExpand"  Spacing="20">
+
+                <!-- Header -->
+                <Frame BackgroundColor="#DCC5F5"  Padding="10" HeightRequest="80" HorizontalOptions="FillAndExpand" HasShadow="False">
+                    <Label Text="User Account" HorizontalOptions="Center" FontSize="Medium" TextColor="Black" VerticalOptions="CenterAndExpand"/>
+                </Frame>
+
+                <!-- Profile Picture and User Name -->
+                <StackLayout Orientation="Horizontal" HorizontalOptions="Center" VerticalOptions="StartAndExpand" Spacing="10" Padding="10,30,10,10">
+                    <!-- User Icon using Font Awesome -->
+                    <Label Text="&#xf007;" FontFamily="{StaticResource FontAwesomeSolid}" FontSize="50" TextColor="Black" VerticalOptions="Center" HorizontalOptions="End" />
+                    <!-- User Name -->
+                    <Label x:Name="UserNameLabel" FontSize="Large" TextColor="Black" VerticalOptions="Center" HorizontalOptions="Start"/>
+                </StackLayout>
+
+                <!-- User Details -->
+                <StackLayout Padding="20,10,20,20" Spacing="10" VerticalOptions="StartAndExpand">
+                    <Grid ColumnDefinitions="Auto, *" RowSpacing="10">
+                        <!-- Email -->
+                        <Label Text="Email :" FontSize="Medium" TextColor="Black" VerticalOptions="Center"/>
+                        <Label x:Name="EmailLabel" FontSize="Medium" TextColor="Black" Grid.Column="1" VerticalOptions="Center"/>
+
+                        <!-- Contact -->
+                        <Label Text="Contact :" FontSize="Medium" TextColor="Black" VerticalOptions="Center" Grid.Row="1"/>
+                        <Label x:Name="ContactLabel" FontSize="Medium" TextColor="Black" Grid.Row="1" Grid.Column="1" VerticalOptions="Center"/>
+
+                        <!-- Address -->
+                        <Label Text="Address :" FontSize="Medium" TextColor="Black" VerticalOptions="Center" Grid.Row="2"/>
+                        <Label x:Name="AddressLabel" FontSize="Medium" TextColor="Black" Grid.Row="2" Grid.Column="1" VerticalOptions="Center"/>
+                    </Grid>
+                </StackLayout>
+
+                <!-- Action Buttons -->
+                <StackLayout Padding="20" Spacing="10" HorizontalOptions="Center">
+                    <Button Text="Contact Library" BackgroundColor="#DCC5F5" TextColor="Black" WidthRequest="150" HeightRequest="40" CornerRadius="20" Clicked="Contactlib"/>
+                    <Button Text="Logout" BackgroundColor="#DCC5F5" TextColor="Black" WidthRequest="150" HeightRequest="40" CornerRadius="20" Clicked="logout"/>
+                </StackLayout>
+
+                <!-- Bottom Navigation -->
+                <local:bottomnavigation VerticalOptions="End" />
+            </StackLayout>
+        </StackLayout>
+    </ContentPage.Content>
+</ContentPage>

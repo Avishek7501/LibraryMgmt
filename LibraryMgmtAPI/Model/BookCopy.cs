@@ -8,7 +8,7 @@ namespace LibraryMgmtAPI.Model
         
         public int CopyID { get; set; }  // Primary Key
         public int BookID { get; set; }  // Foreign Key to Books table
-        [Required]
+
         public bool IsIssued { get; set; } = false;   // Whether the copy is issued
     }
 }

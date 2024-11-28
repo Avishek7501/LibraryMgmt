@@ -39,29 +39,62 @@ namespace LibraryMgmtAPI.Controllers
             return issuedBook;
         }
 
+        // GET: api/IssuedBooks/Member/{memberId}
+        [HttpGet("Member/{memberId}")]
+        public async Task<ActionResult<IEnumerable<object>>> GetIssuedBooksByMember(int memberId)
+        {
+            var issuedBooks = await _context.IssuedBooks
+                .Where(ib => ib.MemberID == memberId)
+                .Join(
+                    _context.BookCopies,
+                    ib => ib.CopyID,
+                    bc => bc.CopyID,
+                    (ib, bc) => new { IssuedBook = ib, BookCopy = bc }
+                )
+                .Join(
+                    _context.Books,
+                    ibbc => ibbc.BookCopy.BookID,
+                    b => b.BookID,
+                    (ibbc, b) => new
+                    {
+                        ibbc.IssuedBook.IssueID,
+                        ibbc.IssuedBook.MemberID,
+                        ibbc.IssuedBook.CopyID,
+                        ibbc.IssuedBook.IssueDate,
+                        ibbc.IssuedBook.ReturnDate,
+                        Title = b.Title,
+                        Author = b.Author,
+                        Genre = b.Genre,
+                        PublishedDate = b.PublishedDate
+                    }
+                )
+                .ToListAsync();
+
+            if (!issuedBooks.Any())
+            {
+                return NotFound($"No issued books found for member with ID {memberId}.");
+            }
+
+            return Ok(issuedBooks);
+        }
+
         // POST: api/IssuedBooks
         [HttpPost]
         public async Task<ActionResult<IssuedBook>> PostIssuedBook(IssuedBook issuedBook)
         {
-            // Check if the book copy is available
             var bookCopy = await _context.BookCopies.FindAsync(issuedBook.CopyID);
             if (bookCopy == null || bookCopy.IsIssued)
             {
                 return BadRequest("This book copy is either unavailable or already issued.");
             }
 
-            // Set default return date (3 weeks from issue date)
             issuedBook.ReturnDate = issuedBook.IssueDate.AddDays(21);
-
-            // Mark the book copy as issued
             bookCopy.IsIssued = true;
-            _context.Entry(bookCopy).State = EntityState.Modified;
 
-            // Add the issued book record
+            _context.Entry(bookCopy).State = EntityState.Modified;
             _context.IssuedBooks.Add(issuedBook);
             await _context.SaveChangesAsync();
 
-            // No immediate notification creation here
             return CreatedAtAction(nameof(GetIssuedBook), new { id = issuedBook.IssueID }, issuedBook);
         }
 
@@ -105,7 +138,6 @@ namespace LibraryMgmtAPI.Controllers
                 return NotFound();
             }
 
-            // Mark the associated book copy as available
             var bookCopy = await _context.BookCopies.FindAsync(issuedBook.CopyID);
             if (bookCopy != null)
             {
@@ -113,18 +145,15 @@ namespace LibraryMgmtAPI.Controllers
                 _context.Entry(bookCopy).State = EntityState.Modified;
             }
 
-            // Remove notifications associated with this issued book
-            var notifications = _context.Notifications.Where(n => n.BookCopyID ==issuedBook.CopyID);
+            var notifications = _context.Notifications.Where(n => n.BookCopyID == issuedBook.CopyID);
             _context.Notifications.RemoveRange(notifications);
 
-            // Delete the issued book record
             _context.IssuedBooks.Remove(issuedBook);
             await _context.SaveChangesAsync();
 
             return NoContent();
         }
 
-        // Helper Method to Check if IssuedBook Exists
         private bool IssuedBookExists(int id)
         {
             return _context.IssuedBooks.Any(e => e.IssueID == id);
