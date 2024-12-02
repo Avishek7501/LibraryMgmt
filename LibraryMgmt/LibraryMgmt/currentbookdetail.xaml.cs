@@ -8,7 +8,7 @@ namespace LibraryMgmt
     [XamlCompilation(XamlCompilationOptions.Compile)]
     public partial class currentbookdetail : ContentPage
     {
-        public currentbookdetail(Book book)
+        public currentbookdetail(IssuedBookDetail book)
         {
             if (book == null)
             {
@@ -16,9 +16,16 @@ namespace LibraryMgmt
             }
 
             InitializeComponent();
+            Console.WriteLine($"Book Details: Title={book.Title}, IssuedDate={book.IssueDate}, ReturnDate={book.ReturnDate}");
 
             // Set the book object as the BindingContext for the page
             BindingContext = book;
+            
         }
+
+        
+
+        
     }
+
 }

@@ -57,11 +57,11 @@ namespace LibraryMgmtAPI.Controllers
                     b => b.BookID,
                     (ibbc, b) => new
                     {
-                        ibbc.IssuedBook.IssueID,
-                        ibbc.IssuedBook.MemberID,
-                        ibbc.IssuedBook.CopyID,
-                        ibbc.IssuedBook.IssueDate,
-                        ibbc.IssuedBook.ReturnDate,
+                        IssueID = ibbc.IssuedBook.IssueID,
+                        MemberID = ibbc.IssuedBook.MemberID,
+                        CopyID = ibbc.IssuedBook.CopyID,
+                        IssueDate = ibbc.IssuedBook.IssueDate,
+                        ReturnDate = ibbc.IssuedBook.ReturnDate,
                         Title = b.Title,
                         Author = b.Author,
                         Genre = b.Genre,
@@ -87,6 +87,9 @@ namespace LibraryMgmtAPI.Controllers
             {
                 return BadRequest("This book copy is either unavailable or already issued.");
             }
+
+            // Ensure IssueDate is properly initialized
+            issuedBook.IssueDate = DateTime.Now;
 
             issuedBook.ReturnDate = issuedBook.IssueDate.AddDays(21);
             bookCopy.IsIssued = true;

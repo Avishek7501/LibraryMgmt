@@ -28,9 +28,10 @@
                 </Frame>
 
                 <!-- Search Results Section -->
+                <!-- Status Message -->
+                <Label x:Name="ResultStatusLabel" FontSize="Medium" TextColor="Black" HorizontalOptions="Center" />
                 <StackLayout x:Name="SearchResults" Spacing="10" IsVisible="False">
-                    <!-- Status Message -->
-                    <Label x:Name="ResultStatusLabel" FontSize="Medium" TextColor="Black" HorizontalOptions="Center" />
+                    
 
                     <!-- Book Result -->
                     <Frame x:Name="BookResultFrame" IsVisible="False" BackgroundColor="#EAE6F7" CornerRadius="10" Padding="10" Margin="0,5,0,5">

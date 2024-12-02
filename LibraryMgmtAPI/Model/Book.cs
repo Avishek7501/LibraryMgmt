@@ -14,6 +14,6 @@ namespace LibraryMgmtAPI.Model
         [Required]
         public string Genre { get; set; } = string.Empty;
 
-        public DateTime PublishedDate { get; set; }  // DateTime is non-nullable
+        public DateTime PublishedDate { get; set; }  
     }
 }

@@ -30,7 +30,7 @@
                                     <Label Text="&#xf02d;" FontFamily="{StaticResource FontAwesomeSolid}" FontSize="30" TextColor="Purple" VerticalOptions="Center" HorizontalOptions="Start" />
 
                                     <!-- Book Title -->
-                                    <Label Grid.Column="1" Text="{Binding Title}" FontSize="Medium" TextColor="Black" VerticalOptions="Center" HorizontalOptions="Start"/>
+                                    <Label Grid.Column="1" Text="{Binding Title}" FontSize="Medium" TextColor="Black" VerticalOptions="Center" HorizontalOptions="CenterAndExpand"/>
                                 </Grid>
 
                                 <!-- Separator Line -->

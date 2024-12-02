@@ -13,7 +13,7 @@ namespace LibraryMgmt
 	[XamlCompilation(XamlCompilationOptions.Compile)]
 	public partial class returnhistorydetail : ContentPage
 	{
-		public returnhistorydetail (Book book)
+        public returnhistorydetail(ReturnHistoryDetail book)
 		{
             if (book == null)
             {

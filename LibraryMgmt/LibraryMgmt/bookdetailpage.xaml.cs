@@ -1,8 +1,4 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using LibraryMgmt.Models;
 using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
@@ -12,18 +8,16 @@ namespace LibraryMgmt
     [XamlCompilation(XamlCompilationOptions.Compile)]
     public partial class bookdetailpage : ContentPage
     {
-        public bookdetailpage(Book books )
+        public bookdetailpage(Book book)
         {
             InitializeComponent();
-            if (books != null)
+
+            if (book == null)
             {
-                BookTitleLabel.Text = books.Title;
-                BookAuthorLabel.Text = books.Author;
-                BookGenreLabel.Text = books.Genre;
-                BookPublishedDateLabel.Text = books.PublishedDate.ToString("yyyy-MM-dd");
+                throw new ArgumentNullException(nameof(book), "Book cannot be null.");
             }
+
+            BindingContext = book; // Set the book object as the BindingContext for data binding
         }
-
-
     }
 }

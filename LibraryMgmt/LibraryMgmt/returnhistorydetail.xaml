@@ -14,10 +14,10 @@
                 <!-- Book Icon and Title in a Grid for Alignment -->
                 <Grid ColumnDefinitions="80, Auto" HorizontalOptions="Center" VerticalOptions="CenterAndExpand" Padding="10">
                     <!-- Book Icon (Left-aligned with padding) -->
-                    <Label Text="&#xf02d;" FontFamily="{StaticResource FontAwesomeSolid}" FontSize="80" TextColor="Purple" VerticalOptions="Center" Grid.Column="0" HorizontalOptions="End" />
+                    <Label Text="&#xf02d;" FontFamily="{StaticResource FontAwesomeSolid}" FontSize="80" TextColor="Purple" VerticalOptions="Center" Grid.Column="0" HorizontalOptions="CenterAndExpand" />
 
                     <!-- Book Title -->
-                    <Label  Text="{Binding Title}" FontSize="Large" TextColor="Black" VerticalOptions="Center" Grid.Column="1" HorizontalOptions="Start" />
+                    <Label  Text="{Binding Title}" FontSize="Large" TextColor="Black" VerticalOptions="Center" Grid.Column="1" HorizontalOptions="CenterAndExpand" />
                 </Grid>
 
                 <!-- Book Details (Genre, Author, Published Date) -->
@@ -31,9 +31,6 @@
                         <Label Text="Author :" FontSize="Medium" TextColor="Black" VerticalOptions="Center" Grid.Row="1"/>
                         <Label Text="{Binding Author}" FontSize="Medium" TextColor="Black" Grid.Row="1" Grid.Column="1" VerticalOptions="Center"/>
 
-                        <!-- Published Date -->
-                        <Label Text="Published :" FontSize="Medium" TextColor="Black" VerticalOptions="Center" Grid.Row="2"/>
-                        <Label Text="{Binding PublishedDate, StringFormat='{0:yyyy/MM/dd}'}" FontSize="Medium" TextColor="Black" Grid.Row="2" Grid.Column="1" VerticalOptions="Center"/>
                     </Grid>
                 </StackLayout>
 

@@ -13,7 +13,7 @@ namespace LibraryMgmt
         private readonly ApiService _apiService;
         private readonly Member _currentMember;
 
-        public ObservableCollection<Book> CurrentBooks { get; set; }
+        public ObservableCollection<IssuedBookDetail> CurrentBooks { get; set; }
 
         public currentbookpage(Member member)
         {
@@ -27,7 +27,7 @@ namespace LibraryMgmt
             _apiService = new ApiService();
             _currentMember = member;
 
-            CurrentBooks = new ObservableCollection<Book>();
+            CurrentBooks = new ObservableCollection<IssuedBookDetail>();
             BindingContext = this;
 
             FetchCurrentBooks();
@@ -37,11 +37,11 @@ namespace LibraryMgmt
         {
             try
             {
-                // Fetch the current books for the member
-                var books = await _apiService.GetAsync<ObservableCollection<Book>>($"IssuedBooks/Member/{_currentMember.MemberID}");
-                if (books != null)
+                var issuedBooks = await _apiService.GetAsync<ObservableCollection<IssuedBookDetail>>($"IssuedBooks/Member/{_currentMember.MemberID}");
+
+                if (issuedBooks != null)
                 {
-                    foreach (var book in books)
+                    foreach (var book in issuedBooks)
                     {
                         CurrentBooks.Add(book);
                     }
@@ -56,8 +56,9 @@ namespace LibraryMgmt
 
         private async void OnBookTapped(object sender, EventArgs e)
         {
-            var tappedEventArg = (TappedEventArgs)e;
-            var book = tappedEventArg.Parameter as Book;
+            var tappedEventArgs = (TappedEventArgs)e;
+            var book = tappedEventArgs.Parameter as IssuedBookDetail;
+
             if (book != null)
             {
                 await Navigation.PushModalAsync(new currentbookdetail(book));
